@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+//import { stat } from 'fs';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -36,27 +37,27 @@ export class AppComponent {
 	randomIntFromInterval(min: number, max: number) { 
   		return Math.floor(Math.random() * (max - min + 1) + min)
 	}
-	
-	
-	
-	
+
+
+
 	user_selection(){
 		// print weapone for user 
-		const user_selected = document.getElementById("user_selection");
-		const us = document.createElement("us");
+		const user_selected = document.getElementById("user_selection")!;
+		const us = document.createElement("div");
+
 		
 		if (this.selected_weapon ==1){
 			//console.log("user selected rock"); 
-			us.textContent = "\n user selected rock";
+			us.textContent = "user selected rock";
 			user_selected?.appendChild(us);
 			} else if (this.selected_weapon ==2) {
 				//console.log("user selected paper");
-				us.textContent = "\n user selected paper";
+				us.textContent = "user selected paper";
 				//user_selected?.replaceWith(" ");
 				user_selected?.appendChild(us);
 			}else if (this.selected_weapon ==3) {
 				//console.log("user selected scissors");
-				us.textContent = "\n user selected scissors";
+				us.textContent = "user selected scissors";
 				//user_selected?.replaceWith(" ");
 				user_selected?.appendChild(us);
 			}
@@ -64,21 +65,21 @@ export class AppComponent {
 	
 	computer_selection(){
 		
-		const computer_selected= document.getElementById("resultes");
-		const cs = document.createElement("cs");
+		const computer_selected= document.getElementById("user_selection");
+		const cs = document.createElement("div");
 		
 	
 		// print weapone for computer 
 		if (this.computer_weapon ==1){
 			//console.log("computer selected rock");
-			cs.textContent = "\n computer selected rock";
+			cs.textContent = "computer selected rock";
 			computer_selected?.appendChild(cs);
 			} else if (this.computer_weapon ==2) {
-				cs.textContent = "\n computer selected paper";
+				cs.textContent = "computer selected paper";
 				computer_selected?.appendChild(cs);
 				//console.log("\n computer selected paper");
 			}else if (this.computer_weapon ==3) {
-				cs.textContent = "\n computer selected scissors";
+				cs.textContent = "computer selected scissors";
 				computer_selected?.appendChild(cs);
 				//console.log("\n computer selected scissors");
 			}
@@ -86,19 +87,17 @@ export class AppComponent {
 	
 	
 	print_resultes(){
-
+		this.user_selection();
 		this.selected_weapon =0;
-		
 		this.computer_selection();
-		
 		}
 
 	
 	
 	display_result(){
-		
-		const app = document.getElementById("resultes");
-		const p = document.createElement("p");
+	
+		const app = document.getElementById("user_selection");
+		const p = document.createElement("div");
 		
 		
 		//computer selects weapone
@@ -106,7 +105,7 @@ export class AppComponent {
 		
 		
 	
-		// if youser hasn't selected the weapone he can't play	
+		// if user hasn't selected the weapone he can't play	
 		if (this.selected_weapon == 0)	{
 			this.winner =3;
 			this.computer_weapon =0;
@@ -164,14 +163,18 @@ export class AppComponent {
 			p.textContent = "select weapone!";
 			app?.appendChild(p);
 		}
+				
 		
+		//console.log(" ");
+		//console.log(" ");
+		const app1 = document.getElementById("user_selection");
+		const p2 = document.createElement("div");
+		p2.textContent = "-------------end of the round----------------";
+		app1?.appendChild(p2);
 	
-		
-	
-		
-		
-		console.log(" ");
-		console.log(" ");
-		
 	}
 }
+function getElementById(arg0: string): any {
+	throw new Error('Function not implemented.');
+}
+
